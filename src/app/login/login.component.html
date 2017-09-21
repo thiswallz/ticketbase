@@ -1,0 +1,52 @@
+
+<div class="alert alert-danger" role="alert"  *ngIf="message"  >{{message}}</div>
+<div class="container">
+
+
+    <form id="formidglogin" class="form-signin"  name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate style="">
+        <blockquote>
+            <p><img src="assets/lock-flat.png" width="60px" style="    position: absolute;
+    margin-top: -50px;
+    margin-left: 85px;" /><br> Ingresar al Sistema.</p>
+            <footer style="color: #ffd400;">Rellene los campos necesarios</footer>
+        </blockquote>
+
+        <hr>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Username</label>
+                  <div class="input-group">
+             <div class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i> </div>
+           
+            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+            
+            </div>
+            <div *ngIf="f.submitted && !username.valid" class="help-block">Usuario es requerido</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <div class="input-group">
+             <div class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i> </div>
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+            
+            </div>
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Contraseña es requerida</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            Recordarme
+            <input style="margin-left:10px" type="checkbox" />
+          
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary btn-block btnlogin">Login</button>
+            
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <!--a [routerLink]="['/register']" class="btn btn-link">Register</a-->
+        </div>
+        <input type="button"  class="btn btn-default btn-block" value="Olvidaste la contraseña?" />
+    </form>
+</div>
+<script>
+$("#formidglogin").submit(function(){
+  return false;
+});
+</script>

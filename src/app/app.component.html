@@ -1,3 +1,90 @@
-<h1>
-  {{title}}
-</h1>
+
+<div id="nosotroscontent">
+    <div class="divbordenull innercontent"  >
+
+      <div class="row">
+        <div class="col-xs-12hidden-sm hidden-xs">
+          <img src="assets/appstore.png" width="145px" style="margin-left: 40px;margin-top: 50px;"/>
+          <img src="assets/playstore.png" width="145px" style="margin-left: 40px;margin-top: 10px;"/>
+
+           <img src="assets/using.png" width="345px" style="margin-left: 10px;margin-top: 10px;"/>
+        <!--  
+          <img src="assets/loginf.png" width="245px" style="margin-left: 10px;margin-top: 25px;"/>
+          <img src="assets/loging.png" width="250px" style="margin-left: 10px;margin-top: 2px;"/>-->
+          </div>
+      
+      </div>     
+    </div>
+</div>
+
+<div id="llamanoscontent">
+    <div class="divbordeverde innercontent"  >
+
+      <div class="row">
+        <div class="col-xs-3 hidden-sm hidden-xs"><img src="assets/telefono.png" width="50px" style="margin-left: 10px;margin-top: 25px;"/></div>
+        <div class="col-xs-9">
+          <div class="form-group" style="margin-left:10px;margin-top: 20px;">
+            
+            <label for="exampleInputFile" style="    color: #3d89e7;">Necesitas Ayuda? </label>
+            <p class="help-block"><button (click)="openContacto()"  class="btn btn-danger btn-xs" style="width:100px" >Te llamamos!</button></p>
+          </div>
+        </div>
+      </div>     
+    </div>
+</div>
+
+<div id="infocontent">
+    <div class="divborde innercontent" >
+
+      <div class="row">
+        <div class="col-xs-3 hidden-sm hidden-xs"><img src="assets/info.png" width="50px" style="margin-left: 10px;margin-top: 25px;"/></div>
+        <div class="col-xs-9">
+          <div class="form-group" style="margin-left:10px;margin-top: 20px;">
+            
+            <label for="exampleInputFile" style="    color: #3d89e7;">Información </label>
+            <p class="help-block"><button   class="btn btn-info btn-xs " style="width:100px" >Ver</button></p>
+          </div>
+        </div>
+      </div>     
+    </div>
+</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="assets/logo_ram_web.png" width="50px">
+      </a>
+
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav"> 
+            <li  ><a style="font-size: 18px;"  href="#" routerLink="/login" ><i class="fa fa-lg fa-user-o " aria-hidden="true"></i> Login</a></li>
+            <li  *ngIf="usuario"><a style="font-size: 18px;" href="#" routerLink="/ticket" ><i class="fa fa-lg fa-plus" aria-hidden="true"></i> Ingresar Solicitud</a></li>
+            <li  *ngIf="usuario"><a style="font-size: 18px;"  href="#" routerLink="/rastrear" ><i class="fa fa-lg fa-search" aria-hidden="true"></i> Rastrear Estado</a></li>
+        </ul> 
+        <ul class="navbar-text navbar-right" *ngIf="usuario">
+            <span href="" style="color:white" >{{usuario}}</span> 
+            <button type="button" class="btn btn-danger btn-xs" (click)="salir()"><i class="fa fa-ban" aria-hidden="true"></i> Salir</button>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<router-outlet id="maincontent"></router-outlet>
+<router-outlet name="popup"></router-outlet>
+
+<footer class="footer">
+      <div class="container">
+        <p style="padding-top:30px;color:white" class="pull-right">2017 Sistema general de ingreso de solicitudes</p>
+      </div>
+    </footer>

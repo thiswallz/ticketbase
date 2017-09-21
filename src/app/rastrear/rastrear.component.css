@@ -1,0 +1,27 @@
+.main {
+    color: #333 !important;
+    max-width: 600px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.container{
+    padding-top: 50px; 
+}
+
+.main-heading{
+    color: #ffffff;
+}
+
+
+.has-error{
+    color: #ff700a;
+}
+
+.has-success .form-control {
+    border-width: 2px !important;
+    border-color: #6fd471 !important;
+}

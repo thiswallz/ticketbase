@@ -1,0 +1,179 @@
+<div class="container ">
+
+<div class=" main" style="BACKborder: 15px outset rgba(255, 231, 59, 0.85);">
+    <div id="xcontent">
+        <img src="assets/logo_ram_web.png" class="ribbon" width="40px"/>
+    </div>
+    <form   id="idformticketg" class="form-signin" enctype="multipart/form-data" action="{{route}}General/GuardaFormulario" method="POST"  name="form" (ngSubmit)="f.form.valid &&  ingresar()" #f="ngForm" novalidate>
+        <blockquote>
+            <p style="color: #3d89e7;"><img src="assets/form.png"   width="60px" style=" position: absolute;
+    margin-top: -60px;
+    margin-left: 215px;"/> Ingresar Nuevo Ticket.</p>
+ 
+        </blockquote>
+
+        <blockquote style="padding: 5px 5px;border-left: none;">
+            <hr style="    margin-top: 8px;
+    margin-bottom: 8px;">
+            <footer style="color: #3d89e7;    font-weight: bold;">Datos Cliente</footer>
+        </blockquote>
+        <div class=" row">
+            <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !rut.valid,  'has-success': rut.valid }">
+                    <label for="rut">
+                        <i *ngIf="rut.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                        RUT 
+                    </label>
+                    <input type="text" placeholder="19.000.111-k" class="form-control" name="RUT" [(ngModel)]="model.rut" #rut="ngModel" required />
+                    
+                     <input type="hidden" name="USUARIO" [(ngModel)]="model.USUARIO" #USUARIO="ngModel" required />
+
+                    <div *ngIf="f.submitted && !rut.valid" class="help-block">Rut es requerido</div>
+                </div>
+            </div>  
+            <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !nombre.valid, 'has-success': nombre.valid }">
+                    <i *ngIf="nombre.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" name="NOMBRE" [(ngModel)]="model.nombre" #nombre="ngModel" required />
+                    <div *ngIf="f.submitted && !nombre.valid" class="help-block">Nombre es requerido</div>
+                </div>
+            </div> 
+                        <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !direccion.valid, 'has-success': direccion.valid }">
+                    <i *ngIf="direccion.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="direccion">Dirección</label>
+                    <input type="text" class="form-control" name="DIRECCION" [(ngModel)]="model.direccion" #direccion="ngModel" required />
+                    <div *ngIf="f.submitted && !direccion.valid" class="help-block">Direccion es requerida</div>
+                </div>
+            </div>    
+            <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !region.valid, 'has-success': region.valid }">
+                    <i *ngIf="region.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="region">Region</label>
+
+                    <select [(ngModel)]="model.region"  #region="ngModel" class="form-control" name="REGION" (ngModelChange)="callComunas($event)" required>
+                        
+                        <option 
+                        *ngFor="let c of regiones"  
+                         [ngValue]="c" 
+                         value="{{c.ID_REGION}}">
+                         {{c.REGION}}
+                         </option>
+                   
+                    </select>
+
+                   
+                    <div *ngIf="f.submitted && !region.valid" class="help-block">Region es requerido</div>
+                </div>
+            </div> 
+            <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !comuna.valid, 'has-success': comuna.valid }">
+                    <i *ngIf="comuna.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="comuna">Comuna</label>
+
+                    <select [(ngModel)]="model.comuna" class="form-control" name="COMUNA"  #comuna="ngModel"  required>
+                        <option *ngFor="let c of comunas" value="{{c.ID_COMUNAS}}">{{c.COMUNA}}</option>
+                    </select>
+
+                    <div *ngIf="f.submitted && !comuna.valid" class="help-block">comuna es requerido</div>
+                </div>
+            </div> 
+            <div class=" col-sm-6"> 
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid, 'has-success': email.valid }">
+                    <i *ngIf="email.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+                    <div *ngIf="f.submitted && !email.valid" class="help-block">email es requerido</div>
+                </div>
+            </div> 
+            <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !telefono.valid, 'has-success': telefono.valid }">
+                    <i *ngIf="telefono.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="telefono">Telefono</label>
+                    <input type="number" class="form-control" name="telefono" [(ngModel)]="model.telefono" #telefono="ngModel" required />
+                    <div *ngIf="f.submitted && !telefono.valid" class="help-block">telefono es requerido</div>
+                </div>
+            </div> 
+        </div>
+<blockquote style="padding: 5px 5px;border-left: none;">
+            <hr style="    margin-top: 8px;
+    margin-bottom: 8px;">
+            <footer style="color: #3d89e7;    font-weight: bold;">Datos Técnicos</footer>
+        </blockquote>
+        <div class="row">
+
+            <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !tipo_ticket.valid, 'has-success': tipo_ticket.valid }">
+                    <i *ngIf="tipo_ticket.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="tipo_ticket">Tipo Ticket</label>                    
+                    <select [(ngModel)]="model.tipo_ticket" class="form-control" name="tipo_ticket"  #tipo_ticket="ngModel"   required>
+                        <option *ngFor="let c of tipoTickets" value="{{c.ID_TIPO_TICKET}}">{{c.TIPO_TICKET}}</option>
+                    </select>
+                    
+                    
+                    <div *ngIf="f.submitted && !tipo_ticket.valid" class="help-block">tipo_ticket es requerido</div>
+                </div>
+            </div> 
+            <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !producto.valid, 'has-success': producto.valid }">
+                    <i *ngIf="producto.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="producto">Producto</label>
+                    
+                    <select [(ngModel)]="model.producto" class="form-control" name="producto"  #producto="ngModel"   required>
+                        <option *ngFor="let c of productos" value="{{c.ID_PRODUCTO}}">{{c.PRODUCTO}}</option>
+                    </select>
+                    
+                    
+                    <div *ngIf="f.submitted && !producto.valid" class="help-block">producto es requerido</div>
+                </div>
+            </div> 
+            <div class=" col-sm-6">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !incidencia.valid, 'has-success': incidencia.valid }">
+                    <i *ngIf="incidencia.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="incidencia">Incidencia</label>
+                     
+                    <select [(ngModel)]="model.incidencia" class="form-control" name="incidencia"  #incidencia="ngModel"   required>
+                        <option *ngFor="let c of incidencias" value="{{c.ID_INCIDENCIA}}">{{c.INCIDENCIA}}</option>
+                    </select>
+                    
+                    <div *ngIf="f.submitted && !incidencia.valid" class="help-block">incidencia es requerido</div>
+                </div>
+            </div> 
+ 
+
+            <div class=" col-sm-6">
+                 <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+           
+                 Adjuntar Imagen: <input  name="file" type="file" style="
+                   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+                 " />
+                 <br/>
+            </div>
+
+                       <div class=" col-sm-12">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !observacion.valid, 'has-success': observacion.valid }">
+                    <i *ngIf="observacion.valid" class="fa fa-check-circle" style="color:#6fd471"></i> 
+                    <label for="observacion">Observacion</label>
+                    <textarea type="text" class="form-control" name="observacion" [(ngModel)]="model.observacion" #observacion="ngModel" required ></textarea>
+                    <div *ngIf="f.submitted && !observacion.valid" class="help-block">observacion es requerido</div>
+                </div>
+            </div> 
+
+        </div>
+
+        <hr>
+
+
+
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary  btn-block" value="ENVIAR INFORMACIÓN" style="height: 60px;" />
+        </div>
+    </form>
+
+</div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container ">
+
+<div class=" main" style="">
+    <div id="xcontent">
+        <img src="assets/logo_ram_web.png" class="ribbon" width="40px"/>
+    </div>
+    <form   id="idformRastrearg" class="form-signin"  
+      name="form" (ngSubmit)="f.form.valid &&  ingresar()" #f="ngForm" novalidate>
+        <blockquote>
+            <p style="color: #3d89e7;"><img src="assets/search.png"   width="60px" style=" position: absolute;
+    margin-top: -60px;
+    margin-left: 215px;"/> <br>Rastrear estado de mi solicitud.</p>
+            <footer style="color: #999;">Ingrese código que recibió al enviar la solicitud.</footer>
+        </blockquote>
+        <div class=" row">
+            <div class=" col-sm-12">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !codigo.valid,  'has-success': codigo.valid }">
+                    <label for="codigo" style="font-size: 25px;">CÓDIGO DE SOLICITUD</label>
+                    <input type="number" placeholder="" class="form-control" name="codigo" [(ngModel)]="model.codigo" #codigo="ngModel" required 
+                    style="height: 70px;text-align: center;font-size: 25px;font-weight: bold;" />
+                </div>
+            </div>  
+           
+
+        </div>
+
+        <hr>
+
+
+
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-warning  btn-block" value="BUSCAR INFORMACIÓN" style="height: 60px;" />
+        </div>
+    </form>
+
+</div>
+</div>

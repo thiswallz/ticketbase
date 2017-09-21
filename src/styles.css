@@ -1,1 +1,109 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height:100%; }
+body {
+    background-color: #eee !important ;
+    /*overflow: hidden;*/
+    background: url(./assets/bg4.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    /*position: fixed;*/
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100% !important;
+    margin-left: 1px !important;
+    background-size: cover;
+        
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#maincontent{
+  flex: 1;
+  padding: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+#xcontent {
+    position: relative;
+}
+#xcontent img {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
+
+
+#llamanoscontent {
+    position: relative;
+}
+#llamanoscontent .innercontent {
+    position: absolute;
+    top: 130px;
+    right: 0px;
+}
+
+#nosotroscontent {
+    position: relative;
+}
+#nosotroscontent .innercontent {
+    position: absolute;
+    top: 50px;
+    /* right: 0px; */
+    left: 0px;
+    color:white;
+}
+
+#infocontent {
+    position: relative;
+}
+#infocontent .innercontent {
+    position: absolute;
+    top: 250px;
+    right: 0px;
+}
+
+
+.navbar-default {
+    background-color: rgba(0, 22, 33, 0.54)!important;
+    border-color: rgba(60, 156, 206, 0.41)!important;
+}
+.navbar{
+        border-radius: 0px !important;
+}
+
+
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff !important;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: rgba(239, 255, 0, 0.85) !important;
+}
+
+.input-group-addon {
+
+    background-color: #d7ef22 !important;
+
+}
+
+.btnlogin {
+    background-color: #e96262 !important;
+    border-color: #f8c852 !important;
+}
+
+.container{
+    padding-top: 10px !important;
+} 

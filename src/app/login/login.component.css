@@ -1,0 +1,17 @@
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+.container{
+    padding-top: 50px;
+    color: #2d83c2;
+}
+
+.form-signin-heading{
+    color: #999;
+}
